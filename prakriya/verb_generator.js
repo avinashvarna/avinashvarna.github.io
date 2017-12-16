@@ -16,7 +16,12 @@ function createPanel(heading, row, id, outputTrans) {
     row.forEach(function (entry) {
         var item = entry.map(function (e) {return Sanscript.t(e, 'slp1', outputTrans)});
         h += "<tr><td>";
-        h += item[0] + " (" + item[1] + ")</td><td>" + item[2] + "</td></tr>";
+        if (entry[0] != "Final form") {
+            h += item[0] + " (" + item[1] + ")</td>";
+        } else {
+            h += "Final form";
+        }
+        h += "<td>" + item[2] + "</td></tr>";
     });
     h += "</tbody></table>";
     h += "</div></div></div>";
