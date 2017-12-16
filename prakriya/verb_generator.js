@@ -11,11 +11,6 @@ $.fn.enterKey = function (fnc) {
     })
 }
 
-// use custom plugin
-$(document).enterKey(function () {
-    $("#goButton").click();
-});
-
 function createPanel(heading, row, id, outputTrans) {
     var cardClass = id % 2
         ? "bg-secondary"
@@ -91,6 +86,10 @@ $(document).ready( function () {
         });
     });
 
+    // use custom plugin
+    $("#inputText").enterKey(function () {
+        $("#goButton").click();
+    });
 
 });
 
