@@ -4,10 +4,13 @@ function createPanel(heading, row, id, outputTrans) {
     var cardClass = id % 2
         ? "bg-secondary"
         : "bg-primary";
+    var expanded = id == 0 
+        ? "show" 
+        : "";
     var h = "<div class=\"card\"><div class=\"card-header " + cardClass + "\">";
     h += "<a class=\"text-white\" data-toggle=\"collapse\" href=\"#collapse" + id + "\" aria-expanded=\"false\" aria-controls=\"collapse" + id + "\">";
     h += heading + "</a></div>";
-    h += "<div id=\"collapse" + id + "\" class=\"collapse\"><div class=\"card-block\">";
+    h += "<div id=\"collapse" + id + "\" class=\"collapse " + expanded + "\"><div class=\"card-block\">";
     h += "<table class=\"table table-striped\">";
     h += "<thead><th scope=\"col\">Sutra</th><th scope=\"col\">Effect</th></thead><tbody>";
     row.forEach(function (entry) {
@@ -44,9 +47,10 @@ $(document).ready( function () {
             $("#devinp").text(inputText);
             $("#jsonbox").text(s);
             $("#restable").html("");
-            console.log(result);
+            //console.log(result);
             if(Array.isArray(result)) {
-                var restable = "Please click on a prakriya below to expand/collapse";
+                var restable = "<strong>Found " + result.length + " prakriyas</strong>"
+                restable += "<br>Please click on a prakriya below to expand/collapse";
                 $("#reshead").text("Prakriyaa");
                 var panelID = 0;
                 result.forEach( function(res) {
