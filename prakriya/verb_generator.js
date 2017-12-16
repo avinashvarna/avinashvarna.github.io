@@ -41,7 +41,9 @@ function createPanel(heading, row, id, outputTrans) {
 
 $(document).ready( function () {
     $("#goButton").on("click", function () {
-        var urlbase = $.query.get("api_url_base") !== ""? $.query.get("api_url_base") : "https://api.sanskritworld.in/v0.0.1/";
+        var urlbase = $.query.get("api_url_base") !== ""
+            ? $.query.get("api_url_base")
+            : "https://api.sanskritworld.in/v0.0.2/input/slp1/output/slp1/";
         var btn = $(this);
         var btxt = btn.text();
         btn.removeClass("btn-primary").addClass("btn-secondary");
