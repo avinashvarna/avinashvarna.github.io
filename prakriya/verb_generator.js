@@ -1,4 +1,20 @@
 //"use strict";
+// write small plugin for keypress enter detection
+$.fn.enterKey = function (fnc) {
+    return this.each(function () {
+        $(this).keypress(function (e) {
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            if (keycode == '13') {
+                fnc.call(this, e);
+            }
+        })
+    })
+}
+
+// use custom plugin
+$(document).enterKey(function () {
+    $("#goButton").click();
+});
 
 function createPanel(heading, row, id, outputTrans) {
     var cardClass = id % 2
@@ -30,7 +46,7 @@ function createPanel(heading, row, id, outputTrans) {
 
 $(document).ready( function () {
     $("#goButton").on("click", function () {
-        var urlbase = $.query.get("api_url_base") !== ""? $.query.get("api_url_base") : "http://api.sanskritworld.in/v0.0.1/";
+        var urlbase = $.query.get("api_url_base") !== ""? $.query.get("api_url_base") : "https://api.sanskritworld.in/v0.0.1/";
         var btn = $(this);
         var btxt = btn.text();
         btn.removeClass("btn-primary").addClass("btn-secondary");
