@@ -22,7 +22,9 @@ function createPanel(heading, row, id, outputTrans) {
     h += "<thead><th scope=\"col\">Sutra</th><th scope=\"col\">Effect</th></thead><tbody>";
     row.forEach(function (entry) {
         var item = entry.map(function (e) {
-            return Sanscript.t(e, "slp1", outputTrans);
+            var temp = e.replace("!","~");
+            console.log(e);console.log(temp);
+            return Sanscript.t(temp, "slp1", outputTrans);
         });
         h += "<tr><td>";
         if (entry[0] !== "Final form") {
