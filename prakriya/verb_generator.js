@@ -24,14 +24,10 @@ function createPanel(heading, row, id, outputTrans) {
         var item = entry.map(function (e) {
             var temp = e.replace("!","~");
             console.log(e);console.log(temp);
-            return Sanscript.t(temp, "slp1", outputTrans);
+            return temp;
         });
         h += "<tr><td>";
-        if (entry[0] !== "Final form") {
-            h += item[0] + " (" + item[1] + ")</td>";
-        } else {
-            h += "Final form";
-        }
+        h += item[0] + " (" + item[1] + ")</td>";
         h += "<td>" + item[2] + "</td></tr>";
     });
     h += "</tbody></table>";
@@ -41,25 +37,19 @@ function createPanel(heading, row, id, outputTrans) {
 
 $(document).ready(function () {
     $("#goButton").on("click", function () {
+        var inputTrans = $("#inputTrans").val();
         var urlbase = $.query.get("api_url_base") !== "" ? $.query.get("api_url_base")
-            : "https://api.sanskritworld.in/v0.0.2/input/slp1/output/slp1/";
+            : "https://api.sanskritworld.in/v0.0.2/verbforms/" + inputTrans + '/';
         var btn = $(this);
         var btxt = btn.text();
         btn.removeClass("btn-primary").addClass("btn-secondary");
         btn.text("Loading ...");
         $("#issueButton").addClass("d-none");
-        var inputTrans = $("#inputTrans").val();
         var inputText = $("#inputText").val();
-        var txt;
-        if (inputTrans !== "slp1") {
-            //console.log("Converting " + inputText + " from " + inputTrans + " to slp1");
-            txt = Sanscript.t(inputText, inputTrans, "slp1");
-            //console.log(txt);
-        } else {
-            txt = inputText;
-        }
+        var txt = inputText;
         var outputTrans = $("#outputTrans").val();
-        var url = urlbase + txt + "/prakriya/machine";
+        var url = urlbase + txt + "/prakriya/machine?output_transliteration=" + outputTrans;
+        console.log(url);
         $.getJSON(url, function (result) {
             var s = JSON.stringify(result);
             $("#devinp").text(inputText);
@@ -95,4 +85,3 @@ $(document).ready(function () {
     });
 
 });
-
