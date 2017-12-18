@@ -75,7 +75,6 @@ $(document).ready(function () {
         var inputText = $("#inputText").val();
         var outputTrans = $("#outputTrans").val();
         var url = urlbase + inputText + "?output_transliteration=" + outputTrans;
-        console.log(url);
         $.getJSON(url, function (result) {
             var s = JSON.stringify(result);
             $("#devinp").text(inputText);
