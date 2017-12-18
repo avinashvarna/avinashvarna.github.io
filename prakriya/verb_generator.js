@@ -18,6 +18,7 @@ function createSubPanel(result, id) {
     h += "<a class=\"\" data-toggle=\"collapse\" href=\"#collapseSub" + id + "\" aria-expanded=\"false\" aria-controls=\"collapseSub" + id + "\">";
     h += "Additional Information</a></div>"; //card-header
     h += "<div id=\"collapseSub" + id + "\" class=\"collapse \">";
+    h += "<div class=\"card-body\">(Some links may not work for certain forms)</div>";
     h += "<table class=\"table table-striped\"><tbody>";
     var links = ["madhaviya", "dhatupradipa", "kshiratarangini", "jnu", "uohyd"];
     links.forEach(function (prop) {
