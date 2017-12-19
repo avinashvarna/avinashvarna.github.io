@@ -20,7 +20,7 @@ function createSubPanel(result, id) {
     h += "<div id=\"collapseSub" + id + "\" class=\"collapse \">";
     h += "<div class=\"card-body\">(Some links may not work for certain forms)</div>";
     h += "<table class=\"table table-striped\"><tbody>";
-    var links = ["madhaviya", "dhatupradipa", "kshiratarangini", "jnu", "uohyd"];
+    var links = ["madhaviya", "dhatupradipa", "kshiratarangini", "uohyd"];
     links.forEach(function (prop) {
         h += "<tr><td>" + prop + "</td>";
         h += "<td><a href=" + result[prop] + ">Link</a></td>";
