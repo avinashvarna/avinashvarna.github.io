@@ -51,8 +51,8 @@ function createPanel(result, id) {
     h += "<thead><th scope=\"col\">Sutra</th><th scope=\"col\">Effect</th></thead><tbody>";
     result.derivation.forEach(function (item) {
         h += "<tr><td>";
-        h += item[0] + " (" + item[1] + ")</td>";
-        h += "<td>" + item[2] + "</td></tr>";
+        h += item.sutra + " (" + item.sutra_num + ")</td>";
+        h += "<td>" + item.form + "</td></tr>";
     });
     h += "</tbody></table>";
 
