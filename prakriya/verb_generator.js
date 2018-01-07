@@ -49,7 +49,7 @@ function createPanel(result, id) {
     h += "<div id=\"collapse" + id + "\" class=\"collapse " + expanded + "\">";
     h += "<table class=\"table table-striped\">";
     h += "<thead><th scope=\"col\">Sutra</th><th scope=\"col\">Effect</th></thead><tbody>";
-    result.derivation.forEach(function (item) {
+    result.prakriya.forEach(function (item) {
         h += "<tr><td>";
         h += item.sutra + " (" + item.sutra_num + ")</td>";
         h += "<td>" + item.form + "</td></tr>";
