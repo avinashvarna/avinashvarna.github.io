@@ -51,7 +51,12 @@ function createPanel(result, id) {
     h += "<thead><th scope=\"col\">Sutra</th><th scope=\"col\">Effect</th></thead><tbody>";
     result.prakriya.forEach(function (item) {
         h += "<tr><td>";
-        h += item.sutra + " (" + item.sutra_num + ")</td>";
+        h += item.sutra;
+        if(item.sutra_num.includes(".")) {
+            h += " (<a href=\"http://www.ashtadhyayi.com/sutraani/" + item.sutra_num.replace(/\./g, "/") + "\">";
+            h += item.sutra_num + "</a>)";
+        }
+        h += "</td>";
         h += "<td>" + item.form + "</td></tr>";
     });
     h += "</tbody></table>";
