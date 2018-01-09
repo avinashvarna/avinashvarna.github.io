@@ -37,7 +37,11 @@ function createPanel(result, id) {
     var expanded = id === 0 ? "show" : "";
     var heading = "";
     heading = result.verb + " " + result.meaning + " ";
-    heading += "(" + result.gana + " " + result.it_status + ") - ";
+    heading += "(" + result.gana;
+    if (result.it_status !== "") {
+        heading += " " + result.it_status;
+    }
+    heading += ") - ";
     heading += result.lakara + " ";
     heading += result.purusha + ". " + result.vachana + ". ";
 
@@ -52,8 +56,9 @@ function createPanel(result, id) {
     result.prakriya.forEach(function (item) {
         h += "<tr><td>";
         h += item.sutra;
-        if(item.sutra_num.includes(".")) {
-            h += " (<a href=\"http://www.ashtadhyayi.com/sutraani/" + item.sutra_num.replace(/\./g, "/") + "\">";
+        if (item.sutra_num.includes(".")) {
+            h += " (<a href=\"http://www.ashtadhyayi.com/sutraani/" + item.sutra_num.replace(/\./g, "/") + "\"";
+            h += " target=\"_blank\" rel=\"noopener noreferrer\">";
             h += item.sutra_num + "</a>)";
         }
         h += "</td>";
