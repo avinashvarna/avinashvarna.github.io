@@ -23,7 +23,7 @@ function createSubPanel(result, id) {
     var links = ["madhaviya", "dhatupradipa", "kshiratarangini", "uohyd"];
     links.forEach(function (prop) {
         h += "<tr><td>" + prop + "</td>";
-        h += "<td><a href=" + result[prop] + ">Link</a></td>";
+        h += "<td><a href=" + result[prop] + " target=\"_blank\" rel=\"noopener noreferrer\">Link</a></td>";
     });
     h += "</tbody></table>";
     h += "</div>"; // collapse
