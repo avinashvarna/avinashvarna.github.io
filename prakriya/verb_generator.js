@@ -79,16 +79,16 @@ $(document).ready(function () {
         var urlbase = $.query.get("api_url_base") !== "" ? $.query.get("api_url_base")
             : "https://api.sanskritworld.in/v0.0.2/verbforms/" + inputTrans + "/";
         var btn = $(this);
-        var btxt = btn.text();
         btn.removeClass("btn-primary").addClass("btn-secondary");
         btn.text("Loading ...");
-        $("#issueButton").addClass("d-none");
         var inputText = $("#inputText").val();
         var outputTrans = $("#outputTrans").val();
         var url = urlbase + inputText + "?output_transliteration=" + outputTrans;
+        $("#devinp").text(inputText);
+        $("#jsonbox").text("");
+        $("#jsonButton").addClass("d-none");
         $.getJSON(url, function (result) {
             var s = JSON.stringify(result);
-            $("#devinp").text(inputText);
             $("#jsonbox").text(s);
             $("#restable").html("");
             //console.log(result);
@@ -108,10 +108,17 @@ $(document).ready(function () {
             }
             $("#restable").append(restable);
             $("#jsonButton").removeClass("d-none");
+        })
+        .fail(function () {
+            var msg = "An error occured.";
+            msg += "This may be caused by the input form not being present in the database. Please report any issues <a href=\"https://github.com/drdhaval2785/prakriya/issues\"  target=\"_blank\" rel=\"noopener noreferrer\">here</a>.";
+            $("#restable").html(msg);
+        })
+        .always(function () {
+            btn.removeClass("btn-secondary").addClass("btn-primary");
+            btn.text("Go");
             $("#devtab").removeClass("d-none");
             $("#restab").removeClass("d-none");
-            btn.removeClass("btn-secondary").addClass("btn-primary");
-            btn.text(btxt);
         });
     });
 
