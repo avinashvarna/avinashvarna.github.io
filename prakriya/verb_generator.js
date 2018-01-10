@@ -87,6 +87,8 @@ $(document).ready(function () {
         $("#devinp").text(inputText);
         $("#jsonbox").text("");
         $("#jsonButton").addClass("d-none");
+        $("#restab").addClass("d-none");
+        $("#restable").html("");
         $.getJSON(url, function (result) {
             var s = JSON.stringify(result);
             $("#jsonbox").text(s);
