@@ -74,8 +74,8 @@ function createPanel(result, id) {
 
 function getPrakriya(inputTrans, inputText, outputTrans) {
     var urlbase = $.query.get("api_url_base") !== "" ? $.query.get("api_url_base") :
-            "https://api.sanskritworld.in/v0.0.2/verbforms/" + inputTrans + "/";
-    var url = urlbase + inputText + "?output_transliteration=" + outputTrans;
+            "https://api.sanskritworld.in/v0.0.2/verbforms/";
+    var url = urlbase + inputTrans + "/" + inputText + "?output_transliteration=" + outputTrans;
     
     var btn = $("#goButton");
     btn.removeClass("btn-primary").addClass("btn-secondary");
@@ -108,8 +108,8 @@ function getPrakriya(inputTrans, inputText, outputTrans) {
         $("#restable").append(restable);
         $("#jsonButton").removeClass("d-none");
         
-        var link = $.query.set("input_trans", inputTrans).set("input", inputText).set("output_trans", outputTrans);
-        $("#linkp").text(location.pathname + link.toString());
+        var q = $.query.set("input_trans", inputTrans).set("input", inputText).set("output_trans", outputTrans);
+        $("#linkp").text(location.host + location.pathname + q.toString());
         $("#linktab").removeClass("d-none");
     })
     .fail(function () {
